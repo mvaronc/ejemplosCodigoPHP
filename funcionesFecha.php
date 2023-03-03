@@ -21,17 +21,21 @@ function fechaLarga($fecha)
     return "$aux[0] de ".$meses[$aux[1]-1]." de $aux[2]";
 }
 
-// Le da la vuelta a la fecha
+// Le da la vuelta a la fecha admite también formato fecha hora
 function cambiaFecha($fecha)
 {
+    if (strlen($fecha)>10){ //por si es fecha hora
+        $extra=substr($fecha,10);
+        $fecha=substr($fecha,0,10);
+    }
     if (strpos($fecha,"/") !== FALSE) {
         $vuelta = explode("/", $fecha);
-        return "$vuelta[2]/$vuelta[1]/$vuelta[0]";
+        return "$vuelta[2]/$vuelta[1]/$vuelta[0]".$extra;
     }
     
     if (strpos($fecha,"-") !== FALSE) {
         $vuelta = explode("-", $fecha);
-        return "$vuelta[2]-$vuelta[1]-$vuelta[0]";
+        return "$vuelta[2]-$vuelta[1]-$vuelta[0]".$extra;
     }
     
 }
