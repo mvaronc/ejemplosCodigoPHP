@@ -29,7 +29,7 @@ function creaTabla($datosConsulta){
 }
 
 /**
- * Función para limpar variables evitando sql-injection
+ * Función para limpiar variables evitando sql-injection
  *
  * @param [string] $array  array dónde estan las variables que quieres limpiar
  * @param [link Database] $conexionBD
