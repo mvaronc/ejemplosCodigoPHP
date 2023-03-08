@@ -28,3 +28,17 @@ function creaTabla($datosConsulta){
     return $html;
 }
 
+/**
+ * Función para limpar variables evitando sql-injection
+ *
+ * @param [string] $array  array dónde estan las variables que quieres limpiar
+ * @param [link Database] $conexionBD
+ * @return[string]
+ */
+function escapaVariables($array,$conexionBD){
+    $escapadas=array();
+    foreach($array as $k => $v){
+        $escapadas['$k']=mysqli_real_escape_string($conexionBD,$v);
+    }
+    return $escapadas;
+}
